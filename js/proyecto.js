@@ -42,72 +42,55 @@
     }
  }
 
-
- function crearBarra(id_barra){
-    for(i=0;i<=16;i++){
-        let div = document.createElement("div");
-        div.className = "e";
-        id_barra.appendChild(div);
-    }
- }
+ //SECCION HABILIDADES
 
 
-
-let html = document.getElementById("html");
-crearBarra(html);
-
-
-let javascript = document.getElementById("javascript");
-crearBarra(javascript);
-
-
-let python = document.getElementById("python");
-crearBarra(python);
-
-
-let php = document.getElementById("php");
-crearBarra(php);
-
-
-let react = document.getElementById("react");
-crearBarra(react);
-
-let bootstrap = document.getElementById("bootstrap");
-crearBarra(bootstrap);
-
-
-let contadores = [-1,-1,-1,-1,-1,-1];
-let entro = false;
-
-function efectoHabilidades(){
-    var habiliades  = document.getElementById("habilidades");
-    var distancia_skill = window.innerHeight - habiliades.getBoundingClientRect().top;
-    if(distancia_skill>=300 && entro==false){
-        entro = true;
-        const intervalHtml = setInterval(function(){
-            pintarBarra(html, 16, 0, intervalHtml);
-
-        },100);
-        const intervalJavascript = setInterval(function(){
-            pintarBarra(html,11, 1, intervalJavascript);
-
-        },100);
+ function efectoHabilidades(){
+    var skills = document.getElementById("skills");
+    var distancia_skills = window.innerHeight - skills.getBoundingClientRect().top;
+    if(distancia_skills >= 300){
+        let habilidades = document.getElementsByClassName("progreso");
+        habilidades[0].classList.add("javascript");
+        habilidades[1].classList.add("htmlcss");
+        habilidades[2].classList.add("photoshop");
+        habilidades[3].classList.add("wordpress");
+        habilidades[4].classList.add("drupal");
+        habilidades[5].classList.add("comunicacion");
+        habilidades[6].classList.add("trabajo");
+        habilidades[7].classList.add("creatividad");
+        habilidades[8].classList.add("dedicacion");
+        habilidades[9].classList.add("proyect");
     }
 }
 
 
-function pintarBarra(id_barra, cantidad, indice, interval){
-    contadores[indice]++;
-    x = contadores[indice];
-    if(x < cantidad){
-        let elementos = id_barra.getElementByClassName("e");
-        elementos[x].style.backgroundColor = "#940253";
-    }else{
-        clearInterval(interval)
-    }
-}
-
-
+//detecto el scrolling para aplicar la animacion de la barra de habilidades
 window.onscroll = function(){
     efectoHabilidades();
+} 
+
+ 
+
+function iniciarMap(){
+    var coord = {lat:-34.5956145 ,lng: -58.4431949};
+    var map = new google.maps.Map(document.getElementById('map'),{
+      zoom: 10,
+      center: coord
+    });
+    var marker = new google.maps.Marker({
+      position: coord,
+      map: map
+    });
 }
+
+
+
+
+
+
+
+
+
+
+
+
